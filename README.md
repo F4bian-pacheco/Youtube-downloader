@@ -8,5 +8,5 @@
 
 - [x] Agregar check lists para opciones de mp4 u mp3
 - [x] agregar barra de descarga (posible uso de hilos)
-- [x]mejorar diseño ui (agregar menu)
--[x] refactorizar
+- [x] mejorar diseño ui (agregar menu)
+- [x] refactorizar
