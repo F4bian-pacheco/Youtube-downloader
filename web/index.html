@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/eel.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Aplicacion</title>
+</head>
+<body>
+    <div class="container">
+        <header class="title">
+            <h1>Youtube-Downloader</h1>
+        </header>
+        <main>
+            <div class="downloader">
+                <h2>Inserte URL</h2>
+                <div><input id="url" type="text" autofocus></div>
+                <div id="error"></div>
+                <input class="down-but" type="button" onclick="download_js()">
+            </div>
+
+            <div class="directory">
+                <div class="path" id="path"></div>
+                <input class="btn-down" type="button" onclick="change_directory()">
+            </div>
+        </main>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
