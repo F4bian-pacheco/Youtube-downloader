@@ -7,6 +7,7 @@
 ### TODO
 
 - [ ] Agregar check lists para opciones de mp4 u mp3
+- [ ] Cambiar a boton buscar en lugar de descargar y agregar otro boton para descargar
 - [ ] agregar barra de descarga (posible uso de hilos)
 - [ ] mejorar diseño ui (agregar menu)
 - [ ] refactorizar
