@@ -35,6 +35,13 @@ main{
     justify-content: space-around;
     flex-direction: column;
 }
+
+.cheks{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 input[type="text"]{
     width: 300px;
     height: 25px;
