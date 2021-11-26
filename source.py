@@ -31,6 +31,4 @@ class Downloader:
             return False
 
 # url = "https://www.youtube.com/watch?v=qZHxUy5ZpZE"
-# path = os.getcwd() + "/downloads"
-# mp3(url,path)
 
