@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="/eel.js"></script>
     <link rel="stylesheet" href="style.css">
-    
+
     <title>Aplicacion</title>
 </head>
+
 <body>
     <div class="container">
         <header class="title">
@@ -18,12 +20,12 @@
             <div class="downloader">
                 <h2>Inserte URL</h2>
                 <div class="cheks">
-                    <label>mp4 <input type="checkbox" name="mp4" id="mp4"></label>
-                    <label>mp3 <input type="checkbox" name="mp3" id="mp3"></label>
+                    <label>mp4 <input type="checkbox" name="ext" id="mp4"></label>
+                    <label>mp3 <input type="checkbox" name="ext" id="mp3"></label>
                 </div>
                 <div><input id="url" type="text" autofocus></div>
                 <div id="error"></div>
-        
+
                 <input class="down-but" type="button" onclick="download_js()">
             </div>
 
@@ -35,4 +37,5 @@
     </div>
 </body>
 <script src="main.js"></script>
+
 </html>
