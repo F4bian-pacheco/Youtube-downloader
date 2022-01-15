@@ -1,33 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;600&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Oswald', sans-serif;
 }
 
-.container{
+.container {
     background: linear-gradient(114.09deg, #4D39CA 10.86%, rgba(236, 14, 14, 0.505208) 103.36%, rgba(49, 183, 94, 0) 103.37%);
     background-repeat: no-repeat;
     background-size: cover;
-
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.title{
+.title {
     width: 100%;
     height: 80px;
     text-align: center;
 }
 
-main{
+main {
     width: 100%;
     height: 100%;
     display: flex;
@@ -36,13 +34,13 @@ main{
     flex-direction: column;
 }
 
-.cheks{
+.cheks {
     width: 100%;
     display: flex;
     justify-content: space-around;
 }
 
-input[type="text"]{
+input[type="text"] {
     width: 300px;
     height: 25px;
     border-radius: 10px;
@@ -50,7 +48,7 @@ input[type="text"]{
     outline: 0;
 }
 
-.down-but{
+.down-but {
     margin-top: 50px;
     width: 90px;
     height: 40px;
@@ -62,20 +60,21 @@ input[type="text"]{
     cursor: pointer;
 }
 
-.down-but:hover{
+.down-but:hover {
     background-image: url("./images/icon-down-hover.svg");
 }
 
-.downloader{
+.downloader {
     text-align: center;
 }
 
-.directory{
+.directory {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.btn-down{
+
+.btn-down {
     width: 50px;
     height: 40px;
     background-image: url("./images/icon-dir.svg");
@@ -86,12 +85,21 @@ input[type="text"]{
     cursor: pointer;
 }
 
-.btn-down:hover{
+.btn-down:hover {
     background-image: url("./images/icon-dir-hover.svg");
 }
 
-.path{
+.path {
     width: 100%;
     height: 40px;
-    text-align: center;  
+    text-align: center;
+}
+
+.progress-container {
+    width: 70%;
+    height: 25px;
+}
+
+.progress {
+    width: 100%;
 }
