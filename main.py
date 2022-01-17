@@ -2,7 +2,8 @@ import eel
 import sys
 from tkinter import filedialog, Tk
 import os
-from source import Downloader
+# from source import Downloader
+import pafy
 
 
 sys.path.append("..")
@@ -29,6 +30,11 @@ def get_path_from_js():
 def get_data_from_js():
     return eel.get_data()()
 
+def track(*data):
+    total = data[0]
+    actual = data[1]
+    porcentaje = int((actual/total)*100)
+    print(f"progreso {porcentaje}% :{data[1]}")
 
 @eel.expose
 def download():
@@ -37,11 +43,26 @@ def download():
     url = data["url"]
     ext = data["ext"]
     print(ext)
-    downloader = Downloader(url)
     if ext == "mp3":
-        res = downloader.get_audio(path)
+        try:
+            audio = pafy.new(url)
+            res = audio.getbestaudio("m4a")
+            res.download(path,quiet=True, callback=track)
+            
+            return True
+        except Exception:
+            print("algo malo sucedio en el audio")
+            return False
     elif ext == "mp4":
-        res = downloader.get_video(path)
+        try:
+            video = pafy.new(url)
+            video.getbest("mp4")
+            video = video.download(path,quiet=True,callback=track)
+            print(video.streams)
+            return True
+        except Exception:
+            print("algo malo sucedio en el video")
+            return False
     else:
         res = False
 
@@ -49,6 +70,7 @@ def download():
         return "<p>archivo descargado con exito</p>"
     else:
         return "<p>error al descargar, intente nuevamente</p>"
+
 
 
 eel.start("index.html", size=(700, 500))
@@ -60,3 +82,5 @@ eel.start("index.html", size=(700, 500))
 # * agregar barra de descarga (posible uso de hilos)
 # * mejorar diseño ui (agregar menu)
 # * refactorizar
+
+#? Enlace de prueba: https://www.youtube.com/watch?v=woWR2HV-elU
