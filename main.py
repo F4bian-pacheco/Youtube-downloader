@@ -34,7 +34,7 @@ def track(*data):
     total = data[0]
     actual = data[1]
     porcentaje = int((actual/total)*100)
-    print(f"progreso {porcentaje}% :{data[1]}")
+    print(f"progreso {porcentaje}% :{data[1]}") 
 
 @eel.expose
 def download():
