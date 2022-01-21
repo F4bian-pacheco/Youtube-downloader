@@ -1,3 +1,4 @@
+from audioop import mul
 import eel
 import sys
 from tkinter import filedialog, Tk
@@ -22,6 +23,18 @@ def change_directory():
 def get_path():
     return os.getcwd()
 
+@eel.expose
+def get_info():
+    data = get_data_from_js()
+    url = data["url"]
+    ext = data["ext"]
+
+    multimedia = pafy.new(url)
+    info = {"titulo":multimedia.title,"img":multimedia.thumb}
+    streams = multimedia.allstreams
+    print(streams)
+    return info,streams
+
 
 def get_path_from_js():
     return eel.get_path()()
@@ -30,11 +43,12 @@ def get_path_from_js():
 def get_data_from_js():
     return eel.get_data()()
 
+
 def track(*data):
     total = data[0]
     actual = data[1]
     porcentaje = int((actual/total)*100)
-    print(f"progreso {porcentaje}% :{data[1]}") 
+    print(f"progreso {porcentaje}% :{data[1]}")
 
 @eel.expose
 def download():
@@ -47,7 +61,7 @@ def download():
         try:
             audio = pafy.new(url)
             res = audio.getbestaudio("m4a")
-            res.download(path,quiet=True, callback=track)
+            res.download(path)
             
             return True
         except Exception:
@@ -57,7 +71,7 @@ def download():
         try:
             video = pafy.new(url)
             video.getbest("mp4")
-            video = video.download(path,quiet=True,callback=track)
+            video = video.download(path)
             print(video.streams)
             return True
         except Exception:

@@ -15,6 +15,25 @@ async function download_js() {
     document.getElementById('error').innerHTML = mensaje;
 }
 
+async function get_info_js(){
+    const [info,streams] = await eel.get_info()();
+    console.log("info "+ info)
+    console.log(streams)
+    document.getElementById('info').innerHTML = `
+        <div class="info-content">
+            <img src='${info.img}'>
+            <h4> ${info.titulo} </h4>
+            <input type="button" value="Descargar">
+        </div>
+        
+        <div class="info-content">
+            <img src='${info.img}'>
+            <h4> ${info.titulo} </h4>
+            <input type="button" value="Descargar">
+        </div>
+        `;
+}
+
 eel.expose(get_path);
 function get_path() {
     const elemento = document.getElementById("path");

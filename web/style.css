@@ -103,3 +103,27 @@ input[type="text"] {
 .progress {
     width: 100%;
 }
+
+#info{
+    display: block;
+    height: 100px;
+    overflow-y: auto;
+}
+
+.info-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-div::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+.info-div::-webkit-scrollbar-track {
+    background: #bc6b9d;        /* color of the tracking area */
+}
+.info-div::-webkit-scrollbar-thumb {
+    background-color: #6a46be;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #6a46be;  /* creates padding around scroll thumb */
+}
