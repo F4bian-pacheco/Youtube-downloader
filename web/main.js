@@ -16,22 +16,30 @@ async function download_js() {
 }
 
 async function get_info_js(){
-    const [info,streams] = await eel.get_info()();
+    var info = await eel.get_info()();
     console.log("info "+ info)
-    console.log(streams)
-    document.getElementById('info').innerHTML = `
-        <div class="info-content">
-            <img src='${info.img}'>
-            <h4> ${info.titulo} </h4>
-            <input type="button" value="Descargar">
-        </div>
-        
-        <div class="info-content">
-            <img src='${info.img}'>
-            <h4> ${info.titulo} </h4>
-            <input type="button" value="Descargar">
-        </div>
+    var info_js = JSON.parse(info)
+
+    console.log(info_js)
+    var streams = info_js.stream_list
+    console.log(typeof streams)
+    var streams = streams.slice(1,-1)
+    var streams = streams.split(",")
+    
+    for (let i = 0; i < streams.length; i++) {
+        const element = streams[i];
+        document.getElementById('info').innerHTML += `
+            <div class="info-content">
+                <img src='${info_js.img}'>
+                <span>
+                    <h5> ${i}.- ${element} </h5>
+                    <h6> ${info_js.titulo} </h6>
+                </span>
+                <input type="button" value="Descargar">
+            </div>
         `;
+        
+    }
 }
 
 eel.expose(get_path);
