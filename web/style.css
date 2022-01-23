@@ -48,20 +48,24 @@ input[type="text"] {
     outline: 0;
 }
 
+.search-div{
+    display: flex;
+    height: 40px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
 .down-but {
     margin-top: 50px;
-    width: 90px;
-    height: 40px;
-    background-image: url("./images/icon-down.svg");
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    background-image: url("./images/search.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
     border: none;
     cursor: pointer;
-}
-
-.down-but:hover {
-    background-image: url("./images/icon-down-hover.svg");
 }
 
 .downloader {

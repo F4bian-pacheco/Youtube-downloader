@@ -1,4 +1,3 @@
-from audioop import mul
 import eel
 import sys
 from tkinter import filedialog, Tk
@@ -7,7 +6,7 @@ import os
 import pafy
 import json
 
-
+#Se inicializa el proyecto eel en una ruta
 sys.path.append("..")
 eel.init("web")
 
@@ -28,15 +27,13 @@ def get_path():
 def get_info():
     data = get_data_from_js()
     url = data["url"]
-    ext = data["ext"]
 
     multimedia = pafy.new(url)
     streams = multimedia.allstreams
-    info = {"titulo": multimedia.title,"img": multimedia.thumb,"stream_list":str(streams)}
-    print(type(info))
+    sizes = [bytes_mb(i.get_filesize()) for i in streams]
+    info = {"titulo": multimedia.title,"img": multimedia.thumb,"stream_list":str(streams),"stream_size":str(sizes)}
     info = json.dumps(info)
     return info
-
 
 def get_path_from_js():
     return eel.get_path()()
@@ -44,6 +41,13 @@ def get_path_from_js():
 
 def get_data_from_js():
     return eel.get_data()()
+
+# def get_stream_from_js():
+#     return eel.send_data()()
+
+def bytes_mb(input):
+    a = input / 1048576
+    return round(a,2)
 
 
 def track(*data):
@@ -53,9 +57,21 @@ def track(*data):
     print(f"progreso {porcentaje}% :{data[1]}")
 
 @eel.expose
-def download():
-    ...
-
+def download(data,url,path):
+    data_cl = list(map(lambda x: x.lstrip(), data))
+    try:
+        video = pafy.new(url)
+        streams = video.allstreams
+        all_streams = list(map(str,streams))
+        print(data_cl)
+        print(all_streams[:5])
+        for i,j in enumerate(data_cl):
+            if j in all_streams:
+                print("entro", j,"-",type(streams[i]), streams[all_streams.index(j)])
+                elemento = streams[all_streams.index(j)]
+                elemento.download(path,meta=True)
+    except Exception:
+        raise ValueError("Ha ocurrido un error")
 
 
 eel.start("index.html", size=(900, 600))
@@ -67,5 +83,6 @@ eel.start("index.html", size=(900, 600))
 # * agregar barra de descarga (posible uso de hilos)
 # * mejorar diseño ui (agregar menu)
 # * refactorizar
+# * cuando busco, resetear la lista de resultados
 
 #? Enlace de prueba: https://www.youtube.com/watch?v=woWR2HV-elU
