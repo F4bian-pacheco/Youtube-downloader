@@ -34,11 +34,6 @@ main {
     flex-direction: column;
 }
 
-.cheks {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
 
 input[type="text"] {
     width: 300px;

@@ -76,6 +76,6 @@ function get_path() {
 eel.expose(get_data);
 function get_data() {
     const elemento = document.getElementById("url");
-    data = {"url":elemento.value};
+    const data = {"url":elemento.value};
     return data;
 }
