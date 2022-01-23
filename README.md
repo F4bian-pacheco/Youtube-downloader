@@ -7,7 +7,9 @@
 ### TODO
 
 - [x] Agregar check lists para opciones de mp4 u mp3
-- [ ] Cambiar a boton buscar en lugar de descargar y agregar otro boton para descargar
-- [ ] agregar barra de descarga (posible uso de hilos)
-- [ ] mejorar diseño ui (agregar menu)
+- [x] Quitar cheks list por que se da a elegir el video o audio
+- [x] Cambiar a boton buscar en lugar de descargar y agregar otro boton para descargar
+- [x] Mostrar lista de opciones a descargar con seleccion mulitple
+- [x] agregar barra de descarga (sin threading)
 - [ ] refactorizar
+- [ ] mejorar diseño ui (botones)
