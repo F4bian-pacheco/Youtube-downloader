@@ -4,8 +4,9 @@ from tkinter import filedialog, Tk
 import os
 # from source import Downloader
 import pafy
+import json
 
-
+#Se inicializa el proyecto eel en una ruta
 sys.path.append("..")
 eel.init("web")
 
@@ -22,6 +23,17 @@ def change_directory():
 def get_path():
     return os.getcwd()
 
+@eel.expose
+def get_info():
+    data = get_data_from_js()
+    url = data["url"]
+
+    multimedia = pafy.new(url)
+    streams = multimedia.allstreams
+    sizes = [bytes_mb(i.get_filesize()) for i in streams]
+    info = {"titulo": multimedia.title,"img": multimedia.thumb,"stream_list":str(streams),"stream_size":str(sizes)}
+    info = json.dumps(info)
+    return info
 
 def get_path_from_js():
     return eel.get_path()()
@@ -30,50 +42,39 @@ def get_path_from_js():
 def get_data_from_js():
     return eel.get_data()()
 
+# def get_stream_from_js():
+#     return eel.send_data()()
+
+def bytes_mb(input):
+    a = input / 1048576
+    return round(a,2)
+
+
 def track(*data):
     total = data[0]
     actual = data[1]
     porcentaje = int((actual/total)*100)
-    print(f"progreso {porcentaje}% :{data[1]}") 
+    print(f"progreso {porcentaje}% :{data[1]}")
 
 @eel.expose
-def download():
-    path = get_path_from_js()
-    data = get_data_from_js()
-    url = data["url"]
-    ext = data["ext"]
-    print(ext)
-    if ext == "mp3":
-        try:
-            audio = pafy.new(url)
-            res = audio.getbestaudio("m4a")
-            res.download(path,quiet=True, callback=track)
-            
-            return True
-        except Exception:
-            print("algo malo sucedio en el audio")
-            return False
-    elif ext == "mp4":
-        try:
-            video = pafy.new(url)
-            video.getbest("mp4")
-            video = video.download(path,quiet=True,callback=track)
-            print(video.streams)
-            return True
-        except Exception:
-            print("algo malo sucedio en el video")
-            return False
-    else:
-        res = False
-
-    if res:
-        return "<p>archivo descargado con exito</p>"
-    else:
-        return "<p>error al descargar, intente nuevamente</p>"
+def download(data,url,path):
+    data_cl = list(map(lambda x: x.lstrip(), data))
+    try:
+        video = pafy.new(url)
+        streams = video.allstreams
+        all_streams = list(map(str,streams))
+        print(data_cl)
+        print(all_streams[:5])
+        for i,j in enumerate(data_cl):
+            if j in all_streams:
+                print("entro", j,"-",type(streams[i]), streams[all_streams.index(j)])
+                elemento = streams[all_streams.index(j)]
+                elemento.download(path,meta=True)
+    except Exception:
+        raise ValueError("Ha ocurrido un error")
 
 
-
-eel.start("index.html", size=(700, 500))
+eel.start("index.html", size=(900, 600))
 
 # TODO
 # * Agregar check lists para opciones de mp4 u mp3
@@ -82,5 +83,6 @@ eel.start("index.html", size=(700, 500))
 # * agregar barra de descarga (posible uso de hilos)
 # * mejorar diseño ui (agregar menu)
 # * refactorizar
+# * cuando busco, resetear la lista de resultados
 
 #? Enlace de prueba: https://www.youtube.com/watch?v=woWR2HV-elU

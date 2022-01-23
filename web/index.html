@@ -19,16 +19,18 @@
         <main>
             <div class="downloader">
                 <h2>Inserte URL</h2>
-                <div class="cheks">
-                    <label>mp4 <input type="checkbox" name="ext" id="mp4"></label>
-                    <label>mp3 <input type="checkbox" name="ext" id="mp3"></label>
+                <div class="search-div">
+                    <div><input id="url" type="text" autofocus> </div>
+                    <input class="down-but" type="button" onclick="get_info_js()">
                 </div>
-                <div><input id="url" type="text" autofocus></div>
+                <br>
                 <div id="error"></div>
-
-                <input class="down-but" type="button" onclick="download_js()">
+                <div id="info" class="info-div"></div>
             </div>
 
+            <div class="download-div">
+                <input class="down-but" type="button" onclick="download_js()">
+            </div>
             <div class="progress-container">
                 <progress class="progress" max="100" value="20"></progress>
             </div>

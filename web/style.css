@@ -34,11 +34,6 @@ main {
     flex-direction: column;
 }
 
-.cheks {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
 
 input[type="text"] {
     width: 300px;
@@ -48,11 +43,19 @@ input[type="text"] {
     outline: 0;
 }
 
+.search-div{
+    display: flex;
+    height: 40px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
 .down-but {
     margin-top: 50px;
-    width: 90px;
-    height: 40px;
-    background-image: url("./images/icon-down.svg");
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    background-image: url("./images/search.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
@@ -60,12 +63,9 @@ input[type="text"] {
     cursor: pointer;
 }
 
-.down-but:hover {
-    background-image: url("./images/icon-down-hover.svg");
-}
-
 .downloader {
     text-align: center;
+    width: 70%;
 }
 
 .directory {
@@ -102,4 +102,33 @@ input[type="text"] {
 
 .progress {
     width: 100%;
+}
+
+#info{
+    display: block;
+    height: 120px;
+    overflow-y: auto;
+}
+
+.info-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20%;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.info-div::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+}
+.info-div::-webkit-scrollbar-track {
+    background: #bc6b9d;        /* color of the tracking area */
+}
+.info-div::-webkit-scrollbar-thumb {
+    background-color: #6a46be;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #6a46be;  /* creates padding around scroll thumb */
 }
