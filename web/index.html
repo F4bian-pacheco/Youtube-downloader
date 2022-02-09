@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="/eel.js"></script>
     <link rel="stylesheet" href="style.css">
-    
+
     <title>Aplicacion</title>
 </head>
+
 <body>
     <div class="container">
         <header class="title">
@@ -17,9 +19,20 @@
         <main>
             <div class="downloader">
                 <h2>Inserte URL</h2>
-                <div><input id="url" type="text" autofocus></div>
+                <div class="search-div">
+                    <div><input id="url" type="text" autofocus> </div>
+                    <input class="down-but" type="button" onclick="get_info_js()">
+                </div>
+                <br>
                 <div id="error"></div>
+                <div id="info" class="info-div"></div>
+            </div>
+
+            <div class="download-div">
                 <input class="down-but" type="button" onclick="download_js()">
+            </div>
+            <div class="progress-container">
+                <progress class="progress" id="prog" max="100" value="20"></progress>
             </div>
 
             <div class="directory">
@@ -30,4 +43,5 @@
     </div>
 </body>
 <script src="main.js"></script>
+
 </html>
