@@ -10,19 +10,19 @@ async function change_directory() {
     document.getElementById('path').innerHTML = path;
 }
 
-async function get_info_js(){
+async function get_info_js() {
     var info = await eel.get_info()();
     var info_js = JSON.parse(info)
 
 
     var streams = info_js.stream_list
-    var streams = streams.slice(1,-1)
+    var streams = streams.slice(1, -1)
     var streams = streams.split(",")
 
     var sizes = info_js.stream_size
-    var sizes = sizes.slice(1,-1)
+    var sizes = sizes.slice(1, -1)
     var sizes = sizes.split(",")
-    
+
     for (let i = 0; i < streams.length; i++) {
         const element = streams[i];
         document.getElementById('info').innerHTML += `
@@ -40,17 +40,17 @@ async function get_info_js(){
 }
 
 //eel.expose(send_data)
-function send_data(){
+function send_data() {
     const el = document.querySelectorAll(".descargar")
     let arr_checkeds = []
-    el.forEach(li =>{
-        if(li.checked){
+    el.forEach(li => {
+        if (li.checked) {
             arr_checkeds.push(li.name)
         }
     })
     console.log(arr_checkeds)
     return arr_checkeds
-    
+
 }
 
 async function download_js() {
@@ -58,9 +58,11 @@ async function download_js() {
     url = get_data()["url"]
     console.log(url)
     path = document.getElementById('path').innerHTML
-
-    await eel.download(data,url,path)();
     document.getElementById('error').innerHTML = "descargando";
+
+    myLoop();
+    await eel.download(data, url, path)();
+    document.getElementById('error').innerHTML = " ";
 }
 
 
@@ -76,6 +78,23 @@ function get_path() {
 eel.expose(get_data);
 function get_data() {
     const elemento = document.getElementById("url");
-    const data = {"url":elemento.value};
+    const data = { "url": elemento.value };
     return data;
+}
+
+
+const progress = document.getElementById("prog");
+
+console.log(progress.value);
+
+var i = 1;                  //  set your counter to 1
+
+function myLoop() {         //  create a loop function
+    setTimeout(function () {   //  call a 3s setTimeout when the loop is called
+        progress.value = i;
+        i++;                    //  increment the counter
+        if (i < 101) {           //  if the counter < 10, call the loop function
+            myLoop();             //  ..  again which will trigger another 
+        }                       //  ..  setTimeout()
+    }, 200)
 }
