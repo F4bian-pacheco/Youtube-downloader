@@ -77,7 +77,7 @@ input[type="text"] {
 .btn-down {
     width: 50px;
     height: 40px;
-    background-image: url("./images/icon-dir.svg");
+    background-image: url("./images/icon-down.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-color: transparent;
@@ -86,7 +86,7 @@ input[type="text"] {
 }
 
 .btn-down:hover {
-    background-image: url("./images/icon-dir-hover.svg");
+    background-image: url("./images/icon-down-hover.svg");
 }
 
 .path {
