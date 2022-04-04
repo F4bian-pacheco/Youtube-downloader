@@ -4,7 +4,7 @@
 
 * Elegi esta libreria para practicar javascript sin dejar de lado python, aunque lo tomare como base para entrar a flask y django.
 
-* Entre los puntos a mejorar son el uso correcto de codigo sincrono y asincrono(ya que la barra de descarga no esta conectada a ninguna funcion). Tambien el paso de informacion creo que es mejorable, pero lo importante es que funciona, aunque aun estoy econtrando errores.
+* Entre los puntos a mejorar son el uso correcto de codigo sincrono y asincrono(ya que la barra de descarga no esta conectada a ninguna funcion). Tambien el paso de informacion creo que es mejorable, pero lo importante es que funciona, aunque aun estoy encontrando errores.
 
 * Pensaba subir el ejecutable pero aun tiene errores.
 
@@ -15,5 +15,5 @@
 - [x] Cambiar a boton buscar en lugar de descargar y agregar otro boton para descargar
 - [x] Mostrar lista de opciones a descargar con seleccion mulitple
 - [x] agregar barra de descarga (sin threading)
-- [x] refactorizar
+- [ ] refactorizar
 - [ ] mejorar diseño ui/ux (botones)
